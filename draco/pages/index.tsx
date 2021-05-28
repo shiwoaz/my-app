@@ -5,7 +5,7 @@ const Login: React.FC = () => {
 
   return (
     <>
-      <h1>登录页</h1>
+      <h1 className='font-mono'>Login Page</h1>
     </>
   )
 }
