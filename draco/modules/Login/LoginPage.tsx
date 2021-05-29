@@ -5,6 +5,9 @@ import { LoginButton } from '../../ui/Button'
 import GithubSvg from '../../icons/GithubSvg'
 import TwitterSvg from '../../icons/TwitterSvg'
 
+import { BaseURL } from '../../settings/Global'
+import { oauthURL } from '../../utils/oauth-url'
+
 const Login: React.FC = () => {
 
   return (
@@ -31,11 +34,11 @@ const Login: React.FC = () => {
               <p className='text-center mt-5 font-mono'>It's free to join!</p>
             </div>
             <div className='h-3/6 flex flex-col justify-around items-center w-full'>
-              <LoginButton>
+              <LoginButton href={oauthURL('GITHUB')}>
                 <GithubSvg />
                 <span>Log in with Github</span>
               </LoginButton>
-              <LoginButton>
+              <LoginButton href={`${BaseURL}`}>
                 <TwitterSvg />
                 <span>Log in with Twitter</span>
               </LoginButton>
