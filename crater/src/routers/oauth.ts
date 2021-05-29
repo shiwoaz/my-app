@@ -4,6 +4,8 @@ import fetch from "node-fetch";
 import { FRONTSITE } from "../settings/Global";
 import { Github, github_client_id, github_serect_id } from "../settings/oauth";
 import { GitHubInfo } from "./type";
+import { addGitHubUser, queryLoginType } from "../dao/loginType";
+import db from "../dao/m";
 
 const router: Router = express.Router();
 
@@ -76,7 +78,10 @@ router.get("/oauth/redirect", async (req: Request, res: Response) => {
   }
 
   console.log("success");
-  const info = await GetGithubInfo(access_token!, token_type!);
+  const info = (await GetGithubInfo(access_token!, token_type!)) as
+    | GitHubInfo
+    | any;
+  console.log(info);
 
   if (!(info.login && info.url)) {
     console.log(info.login && info.url, info.login, info.url);
@@ -84,6 +89,17 @@ router.get("/oauth/redirect", async (req: Request, res: Response) => {
     res.redirect(FRONTSITE + "?info=" + info.errno);
     return;
   }
+
+  //add user to database
+  const row = await queryLoginType(db, "GITHUB" + info.id);
+  console.log(row, "row!!");
+
+  if (row.length === 0) {
+    addGitHubUser(db, info);
+  } else {
+    console.log("已经存在");
+  }
+
   res.redirect(FRONTSITE + "/rooms");
 });
 
