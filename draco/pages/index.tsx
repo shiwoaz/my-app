@@ -1,13 +1,3 @@
-import React from 'react'
+import LoginPage from '../modules/Login/LoginPage'
 
-const Login: React.FC = () => {
-
-
-  return (
-    <>
-      <h1 className='font-mono'>Login Page</h1>
-    </>
-  )
-}
-
-export default Login
+export default LoginPage
