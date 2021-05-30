@@ -83,6 +83,7 @@ router.get("/oauth/redirect", async (req: Request, res: Response) => {
     | any;
   console.log(info);
 
+  //github wrong
   if (!(info.login && info.url)) {
     console.log(info.login && info.url, info.login, info.url);
 
@@ -95,12 +96,17 @@ router.get("/oauth/redirect", async (req: Request, res: Response) => {
   console.log(row, "row!!");
 
   if (row.length === 0) {
-    addGitHubUser(db, info);
+    const addRes = await addGitHubUser(db, info);
+    console.log(addRes, ";;");
   } else {
-    console.log("已经存在");
+    console.log("已经存在", row);
+    res.redirect(FRONTSITE + "/redirect?type=" + row[0]["user_type"]);
+    return;
   }
-
-  res.redirect(FRONTSITE + "/rooms");
+  const addRow = await queryLoginType(db, "GITHUB" + info.id);
+  res.redirect(FRONTSITE + "/redirect?type=" + addRow[0]["user_type"]);
+  return;
+  // res.redirect(FRONTSITE + "/rooms");
 });
 
 export default router;

@@ -3,20 +3,27 @@ import { nanoid } from "nanoid";
 
 import { GitHubInfo } from "../routers/type";
 
-const addGitHubUser = async (db: Connection, info: GitHubInfo) => {
+const addGitHubUser = (db: Connection, info: GitHubInfo) => {
   const { login, avatar_url, id } = info;
   const sql = `INSERT INTO users (user_uuid, user_name, user_avatar, user_type, date) values ("${nanoid()}","${login}","${avatar_url}",'GITHUB${id}', '${new Date().toLocaleDateString()}') `;
   //   const userInfo = [[`${nanoid()}`, login, avatar_url, "GITHUB" + id]];
   console.log(sql, "sql");
 
-  try {
+  return new Promise((resolve, reject) => {
     db.query(sql, (err, res, field) => {
-      if (err) throw err;
+      if (err) reject(err);
       console.log(res, field);
+      resolve(res);
     });
-  } catch (err) {
-    console.log("添加出错", err);
-  }
+  })
+    .then((res) => {
+      console.log(res, "promise add!!!!!");
+      return res;
+    })
+    .catch((err) => {
+      console.log(err, "promise add err");
+      return err;
+    });
 };
 
 const queryLoginType = (
