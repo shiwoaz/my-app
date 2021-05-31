@@ -3,22 +3,20 @@ import React, { useEffect } from 'react'
 import { useStore } from '../../store/hooks/useStore'
 import IsLogin from '../isLogin'
 import Layout from '../layouts/layout'
-import FullLayout from '../../ui/FullLayout'
+import Main from './Main'
 
 const RoomPage: React.FC = () => {
 
-  const a = useStore((store: any) => ({
-    id: store.id
-  }))
-  console.log(a);
+  // const a = useStore((store: any) => ({
+  //   id: store.id
+  // }))
+  // console.log(a);
 
   return (
     <>
       <IsLogin>
         <Layout>
-          <FullLayout classname='bg-chatRoom 1'>
-            123
-          </FullLayout>
+          <Main />
         </Layout>
       </IsLogin>
     </>

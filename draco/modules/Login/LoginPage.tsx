@@ -16,7 +16,7 @@ const Login: React.FC = () => {
       <div
         className='w-screen h-screen flex justify-center items-center min-w-1/4'
         style={{
-          "backgroundImage": "linear-gradient(to right, rgb(35, 48, 66), rgb(35, 48, 66))"
+          "backgroundImage": "linear-gradient(to right bottom, #476185,  #354964, rgb(35, 48, 66))"
         }}
       >
         <div
@@ -31,16 +31,16 @@ const Login: React.FC = () => {
           ></div>
           <div className='h-full flex w-5/6 flex-col md:justify-center content-between justify-around'>
             <div className='h-2/6 flex flex-col justify-center '>
-              <h1 className='ext-3xl font-bold text-center text-lg text-pink-100'>Get Started Now</h1>
+              <h1 className='ext-3xl font-bold text-center text-lg text-pink-100 lg:text-3xl md:text-xl'>Get Started Now</h1>
               <p className='text-center mt-5 font-mono text-indigo-50'>It's free to join!</p>
             </div>
             <div className='md:h-3/6 h-1/3 flex flex-col justify-around items-center w-full'>
               <LoginButton href={oauthURL('GITHUB')}>
-                <GithubSvg classname={'text-indigo-50 fill-current'} />
+                <GithubSvg classname={'text-indigo-50 fill-current mr-1'} />
                 <span>Log in with Github</span>
               </LoginButton>
               <LoginButton href={`${BaseURL}`}>
-                <TwitterSvg classname={'text-indigo-50 fill-current'} />
+                <TwitterSvg classname={'text-indigo-50 fill-current mr-1'} />
                 <span>Log in with Twitter</span>
               </LoginButton>
             </div>
