@@ -29,13 +29,10 @@ const RedrectLoading: React.FC<RedrectLoadingProps> = ({
 
   return (
     <>
-      <FullLayout>
+      <FullLayout classname='flex justify-center items-center'>
         <span className="animate-ping absolute inline-flex w-12 h-12 rounded-full bg-blue-400 opacity-75"></span>
         <span className='font-mono md:text-4xl text-xl'>{text}</span>
       </FullLayout>
-      {
-
-      }
     </>
   )
 }

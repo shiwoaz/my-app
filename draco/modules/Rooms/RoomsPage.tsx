@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
-import { GetServerSideProps } from 'next'
 
 import { useStore } from '../../store/hooks/useStore'
 import IsLogin from '../isLogin'
-import useScreenType from '../../hooks/useScreenType'
+import Layout from '../layouts/layout'
+import FullLayout from '../../ui/FullLayout'
 
 const RoomPage: React.FC = () => {
 
@@ -12,28 +12,14 @@ const RoomPage: React.FC = () => {
   }))
   console.log(a);
 
-  const screenType = useScreenType()
-
-  let ui = null
-
-  if (screenType === "G") {
-    ui = (1)
-  }
-  if (screenType === "G-1") {
-    ui = (2)
-  }
-  if (screenType === "G-2") {
-    ui = (3)
-  }
-  if (screenType === "G-3") {
-    ui = (4)
-  }
-
-
   return (
     <>
       <IsLogin>
-        Rooms Page {screenType} {ui}
+        <Layout>
+          <FullLayout classname='bg-chatRoom 1'>
+            123
+          </FullLayout>
+        </Layout>
       </IsLogin>
     </>
   )

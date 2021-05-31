@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from 'react'
 
-const FullLayout: React.FC = ({
-  children
+export type FullLayoutProps = {
+  classname?: string
+}
+
+const FullLayout: React.FC<FullLayoutProps> = ({
+  children,
+  classname = ''
 }) => {
   const [mounted, setMounted] = useState<boolean>(false);
   useEffect(() => {
@@ -12,7 +17,7 @@ const FullLayout: React.FC = ({
     <>
       {
         mounted && (
-          <div className='w-screen h-screen flex justify-center items-center'>
+          <div className={"w-screen h-screen ".concat(classname)}>
             {children}
           </div>
         )
