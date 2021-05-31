@@ -6,14 +6,19 @@ module.exports = {
       backgroundImage: (theme) => ({
         chat: "url(https://ftp.bmp.ovh/imgs/2021/05/4e1e0aa8d00d0cc7.jpeg)",
       }),
+      strokeWidth: {
+        '3': '3',
+        '4': '4',
+      }
     },
     minWidth: {
       "1/4": "25%",
     },
     backgroundColor: theme => ({
       ...theme('colors'),
-      'chatRoom': '#202541'
-    })
+      'chatRoom': '#202541',
+      'roomBgC': '#848aae',
+    }),
   },
   variants: {
     extend: {},
