@@ -22,7 +22,7 @@ const RedrectLoading: React.FC<RedrectLoadingProps> = ({
 
   const { replace } = useRouter()
 
-  replace({
+  where && replace({
     pathname: where,
     query: info
   })
