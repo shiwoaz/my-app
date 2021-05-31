@@ -10,6 +10,10 @@ module.exports = {
     minWidth: {
       "1/4": "25%",
     },
+    backgroundColor: theme => ({
+      ...theme('colors'),
+      'chatRoom': '#202541'
+    })
   },
   variants: {
     extend: {},
