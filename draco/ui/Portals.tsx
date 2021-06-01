@@ -20,8 +20,6 @@ const Portal: React.FC<IPortalProps> = ({
 
   const div = useMemo(() => document.createElement("div"), [])
 
-  const [wait, setWait] = useState<boolean>(false)
-
   const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -32,13 +30,14 @@ const Portal: React.FC<IPortalProps> = ({
 
     return () => {
       target.removeChild(div)
+      clearTimeout(a)
     }
   }, [])
 
 
-  setTimeout(() => {
+  const a = setTimeout(() => {
     ref.current?.classList.add('opacity-100')
-  });
+  },190);
 
   const Sub = (
 
