@@ -1,33 +1,60 @@
-import React from 'react'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 
 interface IPortalProps {
   visible: boolean
   ref?: React.ReactNode
+  anchorEl?: HTMLElement
+  clasname?: string
 }
 
 const Portal: React.FC<IPortalProps> = ({
   visible,
-  children
+  children,
+  anchorEl,
+  clasname
 }) => {
 
-  const Sub = (
-    <div
-      id="portal"
-      className='absolute bg-red-400 w-3/5 overflow-x-hidden top-1/2 left-1/2 p-3 transition-all duration-100 ease-linear'
-      style={{
-        transform: 'translate(-50%,-50%)'
-      }}
-    >
-      {children}
-    </div>
-  )
+  const div = useMemo(() => document.createElement("div"), [])
 
+  const [wait, setWait] = useState<boolean>(false)
 
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+
+    const target = anchorEl ?? document.body
+
+    target.appendChild(div)
+
+    return () => {
+      target.removeChild(div)
+    }
+  }, [])
 
   if (!visible) return null
 
-  return createPortal(Sub, document.querySelector('#__next')!)
+  setTimeout(() => {
+    ref.current?.classList.add('opacity-100')
+  });
+
+  const Sub = (
+
+    <div className='fixed -top-0 -left-0 -right-0 -bottom-0 backdrop-filter backdrop-blur-sm flex justify-center items-center'>
+      <div
+        id="portal"
+        ref={ref}
+        className={`bg-red-400 w-3/5 overflow-x-hidden opacity-0 p-3 duration-300 ease-linear transition-opacity `}
+      >
+        {children}
+      </div>
+    </div>
+
+
+  )
+
+
+  return createPortal(Sub, div)
 }
 
 export default Portal

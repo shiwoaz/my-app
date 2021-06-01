@@ -42,7 +42,7 @@ const Tabbar: React.FC<ITabbar> = ({
           setVisible(true)
           timer = setTimeout(clickHandler);
         }} />
-        <Portal visible={visible}>1</Portal>
+        <Portal visible={visible} clasname='opacity-100'>1</Portal>
       </div>
     </div>
   )
