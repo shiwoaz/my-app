@@ -15,6 +15,9 @@ const Portal: React.FC<IPortalProps> = ({
   clasname
 }) => {
 
+  if (!visible) return null
+
+
   const div = useMemo(() => document.createElement("div"), [])
 
   const [wait, setWait] = useState<boolean>(false)
@@ -32,7 +35,6 @@ const Portal: React.FC<IPortalProps> = ({
     }
   }, [])
 
-  if (!visible) return null
 
   setTimeout(() => {
     ref.current?.classList.add('opacity-100')
@@ -49,7 +51,6 @@ const Portal: React.FC<IPortalProps> = ({
         {children}
       </div>
     </div>
-
 
   )
 
