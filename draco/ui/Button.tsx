@@ -13,7 +13,12 @@ const Button: React.FC<ButtonProps> = ({
   className
 }) => {
 
-  return <button className={className} style={style} onClick={onClick}>{children}</button>
+  const styles: React.CSSProperties = {
+    ...style,
+    outline: 'none'
+  }
+
+  return <button className={className} style={styles} onClick={onClick}>{children}</button>
 }
 
 export default Button
@@ -30,7 +35,7 @@ export const LoginButton: React.FC<LoginButtonProps> = ({ children, href }) => {
   }
 
   return (
-    <Button onClick={onClick} className='p-3 md:p-0 md:h-1/5'>
+    <Button onClick={onClick} className='p-3 md:p-0 md:h-1/5 focus:border-indigo-500'>
       <div className='flex flex-nowrap w-52 min-w-1/4 justify-around p-4 border-2 rounded-md text-indigo-50 border-blue-300 border-opacity-75 hover:bg-blue-500 hover:bg-opacity-10'>
         {children[0]}
         {children[1]}

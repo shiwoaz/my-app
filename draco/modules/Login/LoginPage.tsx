@@ -34,7 +34,7 @@ const Login: React.FC = () => {
               <h1 className='ext-3xl font-bold text-center text-lg text-pink-100 lg:text-3xl md:text-xl'>Get Started Now</h1>
               <p className='text-center mt-5 font-mono text-indigo-50'>It's free to join!</p>
             </div>
-            <div className='md:h-3/6 h-1/3 flex flex-col justify-around items-center w-full'>
+            <div className='md:h-3/6 h-1/3 flex flex-col justify-around items-center w-full mb-1'>
               <LoginButton href={oauthURL('GITHUB')}>
                 <GithubSvg classname={'text-indigo-50 fill-current mr-1'} />
                 <span>Log in with Github</span>
