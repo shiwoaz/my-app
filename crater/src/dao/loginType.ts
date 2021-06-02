@@ -1,11 +1,11 @@
 import Connection from "mysql2/typings/mysql/lib/Connection";
 import { nanoid } from "nanoid";
 
-import { GitHubInfo } from "../routers/type";
+import { GitHubInfo, IGiteeInfo, LoginType } from "../routers/type";
 
-const addGitHubUser = (db: Connection, info: GitHubInfo) => {
+const addGitHubUser = (db: Connection, info: GitHubInfo | IGiteeInfo, type: LoginType) => {
   const { login, avatar_url, id } = info;
-  const sql = `INSERT INTO users (user_uuid, user_name, user_avatar, user_type, date) values ("${nanoid()}","${login}","${avatar_url}",'GITHUB${id}', '${new Date().toLocaleDateString()}') `;
+  const sql = `INSERT INTO users (user_uuid, user_name, user_avatar, user_type, date) values ("${nanoid()}","${login}","${avatar_url}",'${type}${id}', '${new Date().toLocaleDateString()}') `;
   //   const userInfo = [[`${nanoid()}`, login, avatar_url, "GITHUB" + id]];
   console.log(sql, "sql");
 
