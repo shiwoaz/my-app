@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 import Avatar from './Avatar'
 import useUserInfo from './hooks/useUserInfo'
 import Portal from './Portals'
+import PortalSettings from './PortalSettings'
 
 interface ITabbar {
 
@@ -16,22 +17,23 @@ const Tabbar: React.FC<ITabbar> = ({
 
   const [visible, setVisible] = useState<boolean>(false)
 
-  let timer
+  const ref = useRef<HTMLDivElement>(null)
 
-  const clickListener = (e: any) => {
-    console.log(e);
-    e.preventDefault()
-    timer = null
-    if (e.target.id !== 'portal') {
-      setVisible(false)
-      document.removeEventListener('click', clickListener)
-      return
-    }
-  }
+  // let timer
 
-  const clickHandler = () => {
-    document.addEventListener('click', clickListener)
-  }
+  // const clickListener = (e: any) => {
+  //   console.log(e);
+  //   timer = null
+  //   if (e.target.id !== 'portal') {
+  //     setVisible(false)
+  //     document.removeEventListener('click', clickListener)
+  //     return
+  //   }
+  // }
+
+  // const clickHandler = () => {
+  //   document.addEventListener('click', clickListener)
+  // }
 
   return (
     <div className='w-full h-1/6 relative'>
@@ -40,9 +42,14 @@ const Tabbar: React.FC<ITabbar> = ({
       >
         <Avatar url={userInfo?.user_avatar!} height="3rem" width="3rem" onClick={() => {
           setVisible(true)
-          timer = setTimeout(clickHandler);
+          // timer = setTimeout(clickHandler);
         }} />
-        <Portal visible={visible} clasname='opacity-100'>1</Portal>
+        <PortalSettings
+          visible={visible}
+          onClose={() => {
+            setVisible(false)
+          }}
+        />
       </div>
     </div>
   )
