@@ -1,4 +1,12 @@
 export type translateKey =
-  "setting.space" |
-  "setting.logout" |
-  "setting.language" 
+  | "setting.space"
+  | "setting.logout"
+  | "setting.language"
+  | "language.zh-CN"
+  | "language.zh-TW"
+  | "language.ar"
+  | "language.en"
+  | "language.es"
+  | "language.fr"
+  | "language.ru"
+  | "language.ja"
