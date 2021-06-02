@@ -5,7 +5,7 @@ interface IPortalProps {
   visible: boolean
   ref?: React.ReactNode
   anchorEl?: HTMLDivElement
-  clasname?: string
+  clasName?: string
   onClose(): void
 }
 
@@ -13,7 +13,8 @@ const Portal: React.FC<IPortalProps> = ({
   visible,
   children,
   anchorEl,
-  onClose
+  onClose,
+  clasName = ''
 }) => {
 
   if (!visible) return null
@@ -57,7 +58,7 @@ const Portal: React.FC<IPortalProps> = ({
       <div
         id="portal"
         ref={ref}
-        className={`bg-red-400 w-3/5 overflow-x-hidden opacity-0 p-3 duration-300 ease-linear transition-opacity `}
+        className={`w-3/5 overflow-x-hidden opacity-0 p-3 duration-300 ease-linear transition-opacity ${clasName} `}
       >
         {children}
       </div>
