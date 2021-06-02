@@ -17,8 +17,6 @@ const Tabbar: React.FC<ITabbar> = ({
 
   const [visible, setVisible] = useState<boolean>(false)
 
-  const ref = useRef<HTMLDivElement>(null)
-
   // let timer
 
   // const clickListener = (e: any) => {
