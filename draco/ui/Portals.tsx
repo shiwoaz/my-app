@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import React, { useEffect, useMemo, useRef } from 'react'
 import { createPortal } from 'react-dom'
 
 interface IPortalProps {
@@ -12,7 +12,6 @@ const Portal: React.FC<IPortalProps> = ({
   visible,
   children,
   anchorEl,
-  clasname
 }) => {
 
   if (!visible) return null
@@ -21,6 +20,7 @@ const Portal: React.FC<IPortalProps> = ({
   const div = useMemo(() => document.createElement("div"), [])
 
   const ref = useRef<HTMLDivElement>(null)
+  const container = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
 
@@ -37,11 +37,12 @@ const Portal: React.FC<IPortalProps> = ({
 
   const a = setTimeout(() => {
     ref.current?.classList.add('opacity-100')
-  },190);
+    container.current?.classList.add('backdrop-blur-sm')
+  }, 190);
 
   const Sub = (
 
-    <div className='fixed -top-0 -left-0 -right-0 -bottom-0 backdrop-filter backdrop-blur-sm flex justify-center items-center'>
+    <div ref={container} className='fixed -top-0 -left-0 -right-0 -bottom-0 backdrop-filter flex justify-center items-center'>
       <div
         id="portal"
         ref={ref}
