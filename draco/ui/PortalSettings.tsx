@@ -35,15 +35,15 @@ const PortalSettings: React.FC<IPortalSettingsProps> = ({
             className='overflow-auto w-full text-indigo-50 font-sans p-2'
           >
             <Button className='flex text-center w-full'>
-              <PersonSvg classname='fill-current text-green-600' />&nbsp;&nbsp;<span>{t('setting.Space')}</span>
+              <PersonSvg classname='fill-current text-green-600' />&nbsp;&nbsp;<span>{t('setting.space')}</span>
             </Button><br />
             <Button className='flex text-center w-full'
               onClick={() => setSubVisible(true)}
             >
-              <LanguageSvg classname='fill-current text-green-600' />&nbsp;&nbsp;<span>语言</span>
+              <LanguageSvg classname='fill-current text-green-600' />&nbsp;&nbsp;<span>{t('setting.language')}</span>
             </Button><br />
             <Button className='flex text-center w-full'>
-              <LoginOutSvg classname='fill-current text-green-600' />&nbsp;&nbsp;<span>登出</span>
+              <LoginOutSvg classname='fill-current text-green-600' />&nbsp;&nbsp;<span>{t('setting.logout')}</span>
             </Button>
           </div>
         </>
