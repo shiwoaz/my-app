@@ -1,26 +1,29 @@
-import React, { useEffect, useMemo, useRef } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 
 interface IPortalProps {
   visible: boolean
   ref?: React.ReactNode
-  anchorEl?: HTMLElement
+  anchorEl?: HTMLDivElement
   clasname?: string
+  onClose(): void
 }
 
 const Portal: React.FC<IPortalProps> = ({
   visible,
   children,
   anchorEl,
+  onClose
 }) => {
 
   if (!visible) return null
-
 
   const div = useMemo(() => document.createElement("div"), [])
 
   const ref = useRef<HTMLDivElement>(null)
   const container = useRef<HTMLDivElement>(null)
+
+  const clickListener = (e: MouseEvent) => e.target === container.current && onClose()
 
   useEffect(() => {
 
@@ -28,9 +31,12 @@ const Portal: React.FC<IPortalProps> = ({
 
     target.appendChild(div)
 
+    container.current?.addEventListener('click', clickListener)
+
     return () => {
       target.removeChild(div)
       clearTimeout(a)
+      container.current?.removeEventListener('click', clickListener)
     }
   }, [])
 
