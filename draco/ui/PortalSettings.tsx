@@ -1,7 +1,8 @@
 import React, { useRef, useState } from 'react'
+
+import useTranslate from '../hooks/useTranslate'
 import LanguageSvg from '../icons/LanguageSvg'
 import LoginOutSvg from '../icons/LoginOutSvg'
-
 import PersonSvg from '../icons/PersonSvg'
 import Button from './Button'
 
@@ -16,6 +17,8 @@ const PortalSettings: React.FC<IPortalSettingsProps> = ({
   visible,
   onClose
 }) => {
+
+  const { t } = useTranslate()
 
   const ref = useRef<HTMLDivElement>(null)
 
@@ -32,7 +35,7 @@ const PortalSettings: React.FC<IPortalSettingsProps> = ({
             className='overflow-auto w-full text-indigo-50 font-sans p-2'
           >
             <Button className='flex text-center w-full'>
-              <PersonSvg classname='fill-current text-green-600' />&nbsp;&nbsp;<span>个人资料</span>
+              <PersonSvg classname='fill-current text-green-600' />&nbsp;&nbsp;<span>{t('setting.Space')}</span>
             </Button><br />
             <Button className='flex text-center w-full'
               onClick={() => setSubVisible(true)}
@@ -52,8 +55,8 @@ const PortalSettings: React.FC<IPortalSettingsProps> = ({
         anchorEl={ref.current!}
         clasName='bg-gray-800 rounded-lg'
       >
-      <div className='h-full'>
-332
+        <div className='h-full'>
+          332
       </div>
       </Portal>
 
