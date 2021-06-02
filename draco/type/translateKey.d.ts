@@ -1,2 +1,4 @@
 export type translateKey =
-  "setting.Space"
+  "setting.space" |
+  "setting.logout" |
+  "setting.language" 

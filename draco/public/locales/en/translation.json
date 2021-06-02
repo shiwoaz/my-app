@@ -1,5 +1,7 @@
 {
   "setting": {
-    "Space": "Profile"
+    "space": "Profile",
+    "language": "Language",
+    "logout": "Logout"
   }
 }

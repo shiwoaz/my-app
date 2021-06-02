@@ -1,5 +1,7 @@
 {
   "setting": {
-    "Space": "个人中心"
+    "space": "个人中心",
+    "language": "语言",
+    "logout": "登出"
   }
 }
