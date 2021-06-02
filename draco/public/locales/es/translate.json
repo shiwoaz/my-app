@@ -3,5 +3,15 @@
     "space": "Centro de usuarios",
     "language": "Idioma",
     "logout": "Cerrar sesión"
+  },
+  "language": {
+    "zh-CN": "chino",
+    "zh-TW": "chino (tradicional)",
+    "ar": "árabe",
+    "en": "inglés",
+    "es": "español",
+    "fr": "francés",
+    "ru": "ruso",
+    "ja": "japonés"
   }
 }

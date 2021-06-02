@@ -3,5 +3,15 @@
     "space": "Profile",
     "language": "Language",
     "logout": "Logout"
+  },
+  "language": {
+    "zh-CN": "Chinese",
+    "zh-TW": "Chinese (Traditional)",
+    "ar": "Arabic",
+    "en": "English",
+    "es": "Spanish",
+    "fr": "French",
+    "ru": "Russian",
+    "ja": "Japanese"
   }
 }

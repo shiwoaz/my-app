@@ -3,5 +3,15 @@
     "space": "Centre personnel",
     "language": "Langue",
     "logout": "Déconnexion"
+  },
+  "language": {
+    "zh-CN": "Chinois",
+    "zh-TW": "Chinois (traditionnel)",
+    "ar": "Arabe",
+    "en": "Anglais",
+    "es": "Espagnol",
+    "fr": "Français",
+    "ru": "Russe",
+    "ja": "Japonais"
   }
 }
