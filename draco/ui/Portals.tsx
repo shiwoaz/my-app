@@ -23,7 +23,12 @@ const Portal: React.FC<IPortalProps> = ({
   const ref = useRef<HTMLDivElement>(null)
   const container = useRef<HTMLDivElement>(null)
 
-  const clickListener = (e: MouseEvent) => e.target === container.current && onClose()
+  const clickListener = (e: MouseEvent) => {
+    if (e.target === container.current) {
+      ref.current?.classList.remove('opacity-100')
+      setTimeout(onClose, 300)
+    }
+  }
 
   useEffect(() => {
 
