@@ -36,7 +36,7 @@ export const LoginButton: React.FC<LoginButtonProps> = ({ children, href }) => {
 
   return (
     <Button onClick={onClick} className='p-3 md:p-0 md:h-1/5 focus:border-indigo-500'>
-      <div className='flex flex-nowrap w-52 min-w-1/4 justify-around p-4 border-2 rounded-md text-indigo-50 border-blue-300 border-opacity-75 hover:bg-blue-500 hover:bg-opacity-10'>
+      <div className='flex flex-nowrap w-52 min-w-1/4 justify-around p-3 border-2 rounded-md text-indigo-50 border-blue-300 border-opacity-75 hover:bg-blue-500 hover:bg-opacity-10'>
         {children[0]}
         {children[1]}
       </div>

@@ -7,6 +7,7 @@ import TwitterSvg from '../../icons/TwitterSvg'
 
 import { BaseURL } from '../../settings/Global'
 import { oauthURL } from '../../utils/oauth-url'
+import GiteeSvg from '../../icons/GiteeSvg'
 
 const Login: React.FC = () => {
 
@@ -38,6 +39,10 @@ const Login: React.FC = () => {
               <LoginButton href={oauthURL('GITHUB')}>
                 <GithubSvg classname={'text-indigo-50 fill-current mr-1'} />
                 <span>Log in with Github</span>
+              </LoginButton>
+              <LoginButton href={oauthURL('GITEE')}>
+                <GiteeSvg classname={'text-indigo-50 fill-current mr-1'} />
+                <span>Log in with Gitee</span>
               </LoginButton>
               <LoginButton href={`${BaseURL}`}>
                 <TwitterSvg classname={'text-indigo-50 fill-current mr-1'} />
