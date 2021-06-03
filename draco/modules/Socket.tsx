@@ -9,10 +9,12 @@ const Socket: React.FC = ({
 }) => {
 
   const { io: sock } = useContext(SocketProvider)
-
-  const ser = io(APIURL)
+  //@ts-ignore
+  let ser: Socket<DefaultEventsMap, DefaultEventsMap> | null
 
   useEffect(() => {
+
+    ser = io(APIURL)
 
     ser.emit('join', {}, (err: any) => {
       console.log(err);
