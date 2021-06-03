@@ -37,4 +37,13 @@ app.use(cors());
 app.use("", oauther);
 app.use("", user);
 
+app.get('/room/query', (req: Request, res: Response) => {
+  // console.log(io.of('/').adapter.rooms, "rooms");
+  const result = io.of('/').adapter.rooms
+  console.log([...result]);
+
+  res.json([...result]).status(200)
+  return
+})
+
 HttpServer.listen("3001", () => console.log("at 3001"));
