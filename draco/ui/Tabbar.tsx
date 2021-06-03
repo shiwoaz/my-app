@@ -1,9 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState, useContext } from 'react'
 
 import Avatar from './Avatar'
+import Button from './Button'
 import useUserInfo from './hooks/useUserInfo'
 import Portal from './Portals'
 import PortalSettings from './PortalSettings'
+import SocketProvider from '../modules/content/socket'
+import CreateRoom from './CreateRoom'
 
 interface ITabbar {
 
@@ -16,6 +19,9 @@ const Tabbar: React.FC<ITabbar> = ({
   const userInfo = useUserInfo()
 
   const [visible, setVisible] = useState<boolean>(false)
+  const [roomVisible, setRoomVisible] = useState<boolean>(false)
+
+  const { io } = useContext(SocketProvider)
 
   // let timer
 
@@ -42,6 +48,7 @@ const Tabbar: React.FC<ITabbar> = ({
           setVisible(true)
           // timer = setTimeout(clickHandler);
         }} />
+
         <PortalSettings
           visible={visible}
           onClose={() => {
@@ -49,6 +56,14 @@ const Tabbar: React.FC<ITabbar> = ({
           }}
         />
       </div>
+
+      <Button
+        onClick={() => setRoomVisible(true)}
+        className='bg-create font-mono p-3 rounded-md bg-opacity-70 text-pink-100 text-center text-lg font-extrabold absolute top-1/2 right-1/2 transform -translate-x-1/2 -translate-y-1/2'
+      >
+        创建房间
+         </Button>
+      <CreateRoom visible={roomVisible} onClose={() => setRoomVisible(false)} />
     </div>
   )
 }

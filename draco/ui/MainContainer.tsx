@@ -37,7 +37,7 @@ const MainContainer: React.FC<IMainContainer> = ({
         123
         {
           rooms.map(item => (
-            <span>{item[0]}</span>
+            <span key={item[0]}>{item[0]}</span>
           ))
         }
       </div>
