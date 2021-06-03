@@ -18,6 +18,7 @@ module.exports = {
       ...theme("colors"),
       chatRoom: "#202541",
       roomBgC: "#848aae",
+      create: "#626262"
     }),
     variants: {
       extend: {
