@@ -23,9 +23,14 @@ const io = new Server(HttpServer, {
 io.on("connection", (socket: Socket) => {
   console.log("connect");
 
-  socket.on('join', user => {
-    console.log(user);
+  socket.on('join', (info, cb) => {
+    console.log(info);
+    socket.join(info)
+
+    cb()
+
   })
+
 
 });
 
