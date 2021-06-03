@@ -5,6 +5,7 @@ import { Server, Socket } from 'socket.io'
 
 import oauther from "./routers/oauth";
 import user from "./routers/user";
+import { FRONTSITE } from "./settings/Global";
 
 const app: Express = express();
 
@@ -12,7 +13,12 @@ const HttpServer = createServer(app)
 
 // const io = require('socket.io')(Server) 
 
-const io = new Server(HttpServer)
+const io = new Server(HttpServer, {
+  cors: {
+    origin: FRONTSITE,
+    methods: ["GET", "POST"]
+  }
+})
 
 io.on("connection", (socket: Socket) => {
   console.log("connect");
