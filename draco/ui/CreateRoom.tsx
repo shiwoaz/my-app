@@ -1,5 +1,8 @@
 import React, { useState, useContext } from 'react'
 
+//@ts-ignore
+import Event from 'reactjs-eventemitter'
+
 import Button from './Button'
 import Input from './Input'
 import Portal from './Portals'
@@ -39,6 +42,10 @@ const CreateRoom: React.FC<ICreateRoom> = ({
                   return
                 }
                 io?.emit('join', { user, roomName })
+
+                Event.dispatch("reFetch", '')
+
+                onClose()
               }}
             >
               创建

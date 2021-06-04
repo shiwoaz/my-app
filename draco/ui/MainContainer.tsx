@@ -1,10 +1,24 @@
-import { GetServerSideProps } from 'next';
 import React, { useContext, useEffect, useState } from 'react';
 
+//@ts-ignore
+import Event from 'reactjs-eventemitter'
+
 import SocketContext from '../modules/content/socket'
-import { APIURL } from '../settings/Global';
+import useGetRooms from './hooks/useGetRooms';
+import RoomCard from './RoomCard';
 
 interface IMainContainer {
+}
+
+export type rooms = {
+  [k in string]: Array<info>
+}
+
+export type info = {
+  id: string
+  user_name: string
+  user_avatar: string
+  rooms: string
 }
 
 const MainContainer: React.FC<IMainContainer> = ({
@@ -15,30 +29,32 @@ const MainContainer: React.FC<IMainContainer> = ({
 
   console.log(io, 123);
 
-  const [rooms, setRooms] = useState<Array<any>>([])
-
-  const getRooms = async () => {
-    const res = await fetch(APIURL + '/room/query')
-    const c = await res.json()
-    setRooms(c)
-  }
+  const [flag, setFlag] = useState(false)
 
   useEffect(() => {
-    getRooms()
+
+    Event.subscribe('reFetch', () => setFlag(!flag))
+
     return () => {
 
     }
   }, [])
 
+  const rooms = useGetRooms(flag) as rooms
+
 
   return (
     <>
       <div id="container_m" className='h-4/6 shadow-xl w-11/12 mx-auto bg-roomBgC bg-opacity-50 p-2 rounded-md overflow-scroll'>
-        123
         {
-          rooms.map(item => (
-            <span key={item[0]}>{item[0]}</span>
-          ))
+          Object.keys(rooms).map(item => {
+            if (item.length !== 20 && item !== 'undefined') {
+              return (
+                <RoomCard key={item} room={rooms[item]} />
+              )
+            }
+            return null
+          })
         }
       </div>
     </>
