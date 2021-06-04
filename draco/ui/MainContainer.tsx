@@ -35,23 +35,30 @@ const MainContainer: React.FC<IMainContainer> = ({
 
   const [flag, setFlag] = useState(false)
 
+  const user = useUserInfo()
+
+
   useEffect(() => {
 
     Event.subscribe('reFetch', () => setFlag(!flag))
 
-    return () => {
+    io?.emit('main', { user })
+    console.log(user, "addmai");
 
+    return () => {
+      io?.emit('leaveMain')
     }
   }, [])
 
   const rooms = useGetRooms(flag) as rooms
 
-  const user = useUserInfo()
 
 
   return (
     <>
-      <div id="container_m" className='h-4/6 shadow-xl w-11/12 mx-auto bg-roomBgC bg-opacity-50 p-2 rounded-md overflow-scroll'>
+      <div id="container_m" className='h-4/6 shadow-xl w-11/12 mx-auto bg-roomBgC bg-opacity-50 p-2 rounded-md overflow-auto' style={{
+        scrollbarWidth: 'none',
+      }}>
         {
           Object.keys(rooms).map(item => {
             if (item.length !== 20 && item !== 'undefined') {
