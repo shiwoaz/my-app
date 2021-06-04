@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { useRouter } from 'next/router'
 
 //@ts-ignore
 import Event from 'reactjs-eventemitter'
 
 import SocketContext from '../modules/content/socket'
 import useGetRooms from './hooks/useGetRooms';
+import useUserInfo from './hooks/useUserInfo';
 import RoomCard from './RoomCard';
 
 interface IMainContainer {
@@ -25,6 +27,8 @@ const MainContainer: React.FC<IMainContainer> = ({
 
 }) => {
 
+  const { replace } = useRouter()
+
   const { io } = useContext(SocketContext)
 
   console.log(io, 123);
@@ -42,6 +46,8 @@ const MainContainer: React.FC<IMainContainer> = ({
 
   const rooms = useGetRooms(flag) as rooms
 
+  const user = useUserInfo()
+
 
   return (
     <>
@@ -50,7 +56,20 @@ const MainContainer: React.FC<IMainContainer> = ({
           Object.keys(rooms).map(item => {
             if (item.length !== 20 && item !== 'undefined') {
               return (
-                <RoomCard key={item} room={rooms[item]} />
+                <RoomCard
+                  key={item}
+                  room={rooms[item]}
+                  onClick={() => {
+                    console.log(item, "item");
+                    replace({
+                      pathname: '/chat',
+                      query: {
+                        room: item
+                      }
+                    })
+                    // io?.emit('join', { user, roomName: item })
+                  }}
+                />
               )
             }
             return null

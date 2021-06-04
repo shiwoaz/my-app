@@ -8,6 +8,7 @@ import Input from './Input'
 import Portal from './Portals'
 import SocketProvider from '../modules/content/socket'
 import useUserInfo from './hooks/useUserInfo'
+import { useRouter } from 'next/router'
 
 interface ICreateRoom {
   visible: boolean
@@ -25,6 +26,8 @@ const CreateRoom: React.FC<ICreateRoom> = ({
 
   const user = useUserInfo()
 
+  const { replace } = useRouter()
+
   return (
     <>
       <Portal visible={visible} onClose={onClose} clasName='bg-gray-800 rounded-lg '>
@@ -41,7 +44,13 @@ const CreateRoom: React.FC<ICreateRoom> = ({
                   console.log('no name');
                   return
                 }
-                io?.emit('join', { user, roomName })
+                // io?.emit('join', { user, roomName })
+                replace({
+                  pathname: '/chat',
+                  query: {
+                    room: roomName
+                  }
+                })
 
                 Event.dispatch("reFetch", '')
 
