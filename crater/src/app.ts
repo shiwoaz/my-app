@@ -6,6 +6,7 @@ import { Server, Socket } from 'socket.io'
 import oauther from "./routers/oauth";
 import user from "./routers/user";
 import { FRONTSITE } from "./settings/Global";
+import USERS, { addUser, getUsers } from './store'
 
 const app: Express = express();
 
@@ -23,11 +24,19 @@ const io = new Server(HttpServer, {
 io.on("connection", (socket: Socket) => {
   console.log("connect");
 
-  socket.on('join', (info, cb) => {
-    console.log(info);
-    socket.join(info)
 
-    cb()
+  socket.on('join', ({ user, roomName }, cb) => {
+    console.log(user, roomName, 'infos');
+    socket.join(roomName)
+    addUser({
+      ...user,
+      id: socket.id,
+      rooms: roomName
+    })
+    console.log(USERS, "USERS");
+
+    const client = io.sockets.adapter.rooms.get(roomName)
+    // console.log(socket, client, 90);
 
   })
 
@@ -45,9 +54,27 @@ app.use("", user);
 app.get('/room/query', (req: Request, res: Response) => {
   // console.log(io.of('/').adapter.rooms, "rooms");
   const result = io.of('/').adapter.rooms
-  console.log([...result]);
+  console.log(result);
 
-  res.json([...result]).status(200)
+  const obj: {
+    [k in string]: any
+  } = {}
+
+  for (let key of result.keys()) {
+    console.log(key);
+
+    const roomUser = getUsers(key)
+
+    console.log(roomUser);
+
+
+    obj[key] = roomUser
+  }
+
+  console.log(result.keys());
+
+  res.json(obj).status(200)
+
   return
 })
 
