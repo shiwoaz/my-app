@@ -12,7 +12,10 @@ export type addUserFunc = (arg: user) => void
 const addUser: addUserFunc = (user) => {
     const { id, user_avatar, user_name, rooms } = user
 
-    const existCurrentRoom = USERS.find(({ id: uid, rooms: urooms }) => id === uid && rooms === rooms)
+    //no params
+    if (!(id && user_avatar && user_name && rooms)) return
+
+    const existCurrentRoom = USERS.find(({ id: uid, rooms: urooms }) => id === uid && rooms === urooms)
 
     //exist
     if (existCurrentRoom) return

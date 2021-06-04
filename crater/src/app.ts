@@ -54,7 +54,7 @@ app.use("", user);
 app.get('/room/query', (req: Request, res: Response) => {
   // console.log(io.of('/').adapter.rooms, "rooms");
   const result = io.of('/').adapter.rooms
-  console.log(result);
+  // console.log(result);
 
   const obj: {
     [k in string]: any
@@ -63,9 +63,13 @@ app.get('/room/query', (req: Request, res: Response) => {
   for (let key of result.keys()) {
     console.log(key);
 
+    if (key?.length === 20 || key === 'undefined') {
+      continue
+    }
+
     const roomUser = getUsers(key)
 
-    console.log(roomUser);
+    console.log(roomUser, "roomUser");
 
 
     obj[key] = roomUser
