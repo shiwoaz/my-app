@@ -18,11 +18,13 @@ module.exports = {
       ...theme("colors"),
       chatRoom: "#202541",
       roomBgC: "#848aae",
-      create: "#626262"
+      create: "#626262",
+      roomCard: "#151a21"
     }),
     variants: {
       extend: {
         opacity: ["active"],
+        margin: ['first']
       },
     },
   },
