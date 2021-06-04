@@ -20,10 +20,6 @@ const Socket: React.FC = ({
 
     setSer(ser as unknown as any)
 
-    ser.emit('join', {}, (err: any) => {
-      console.log(err);
-    })
-
   }, [])
 
   return (
