@@ -40,6 +40,12 @@ io.on("connection", (socket: Socket) => {
 
   })
 
+  socket.on('leave', (id) => {
+    console.log(id, "leave");
+
+    delUser(id)
+  })
+
   socket.on('disconnect', () => {
     console.log(socket.id, "dis");
     delUser(socket.id)
@@ -58,6 +64,9 @@ app.use("", user);
 
 app.get('/room/query', (req: Request, res: Response) => {
   // console.log(io.of('/').adapter.rooms, "rooms");
+  const room = req.query.room
+  console.log(room, "par");
+
   const result = io.of('/').adapter.rooms
   // console.log(result);
 
@@ -65,22 +74,34 @@ app.get('/room/query', (req: Request, res: Response) => {
     [k in string]: any
   } = {}
 
-  for (let key of result.keys()) {
+  for (let key of result!.keys()) {
     console.log(key);
 
     if (key?.length === 20 || key === 'undefined') {
       continue
     }
 
-    const roomUser = getUsers(key)
+    if (!room) {
+      const roomUser = getUsers(key)
 
-    console.log(roomUser, "roomUser");
+      console.log(roomUser, "roomUser");
 
 
-    obj[key] = roomUser
+      obj[key] = roomUser
+    } else {
+      if (key === room) {
+        const roomUser = getUsers(key)
+
+        console.log(roomUser, "roomUserByID");
+
+
+        obj[key] = roomUser
+      }
+    }
+
   }
 
-  console.log(result.keys());
+  // console.log(result.keys());
 
   res.json(obj).status(200)
 
