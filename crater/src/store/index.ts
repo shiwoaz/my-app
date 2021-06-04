@@ -43,6 +43,18 @@ const getUsers: GetUsersFunc = (room) => {
     return res
 }
 
+export type delUserFunc = (id: string) => void
+
+const delUser: delUserFunc = (id) => {
+    const index = USERS.findIndex(({ id: uid }) => uid === id)
+    console.log(USERS, index, "edel be");
+
+    if (index !== -1) USERS.splice(index, 0)
+    
+    console.log(USERS, index, "edel after");
+
+}
+
 export default USERS
 
-export { addUser, getUsers }
+export { addUser, getUsers, delUser }
