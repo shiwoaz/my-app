@@ -1,13 +1,12 @@
 import React, { useContext, useEffect } from 'react'
-
 import { useRouter } from 'next/router'
+
 import IsLogin from '../isLogin'
 import Socket from '../Socket'
 import Layout from '../layouts/layout'
-import useJoinRoom from './hook/useJoinRoom'
-import SocketProvider from '../content/socket'
-import useUserInfo from '../../ui/hooks/useUserInfo'
 import Connect from './Connect'
+import ChatMain from '../../ui/ChatMain'
+import Main from './Main'
 
 interface IChat {
 
@@ -23,6 +22,7 @@ const ChatPage: React.FC<IChat> = ({ }) => {
       <Socket>
         <Connect>
           <Layout>
+            <Main />
           </Layout>
         </Connect>
       </Socket>
