@@ -29,7 +29,7 @@ const CreateRoom: React.FC<ICreateRoom> = ({
           <div className='h-56 flex flex-col justify-around items-center'>
             <div className='h-24 flex flex-col justify-around items-start'>
               <span className='text-purple-300 text-center'>房间名称 </span>
-              <Input type='text' />
+              <Input type='text' onChange={(v) => setRoomName(v.target.value)} />
             </div>
             <Button
               className='bg-create font-mono p-3 rounded-md bg-opacity-70 text-pink-100 text-center text-lg font-extrabold'
@@ -38,7 +38,7 @@ const CreateRoom: React.FC<ICreateRoom> = ({
                   console.log('no name');
                   return
                 }
-                io?.emit('join', roomName)
+                io?.emit('join', { user, roomName })
               }}
             >
               创建
