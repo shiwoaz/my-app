@@ -5,13 +5,15 @@ interface IAvatar {
   height?: string
   width?: string
   onClick?: () => void
+  className?: string
 }
 
 const Avatar: React.FC<IAvatar> = ({
   url,
   height,
   width,
-  onClick
+  onClick,
+  className = ''
 }) => {
   return (
     <div
@@ -21,7 +23,7 @@ const Avatar: React.FC<IAvatar> = ({
         width: width || "50rpx"
       }}
 
-      className='bg-center bg-no-repeat bg-cover rounded-full'
+      className={`bg-center bg-no-repeat bg-cover rounded-full ${className}`}
 
       onClick={onClick}
     >
