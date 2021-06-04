@@ -6,6 +6,7 @@ import Layout from '../layouts/layout'
 import Main from './Main'
 import SocketProvider from '../content/socket'
 import Socket from '../Socket'
+import LeftMain from '../../ui/LeftMain'
 
 const RoomPage: React.FC = () => {
 
@@ -20,7 +21,9 @@ const RoomPage: React.FC = () => {
     <>
       <IsLogin>
         <Socket>
-          <Layout>
+          <Layout
+            Left={<LeftMain />}
+          >
             <Main />
           </Layout>
         </Socket>

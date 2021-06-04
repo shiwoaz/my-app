@@ -1,8 +1,17 @@
-import React, { useEffect } from 'react'
+import React, { ReactNode } from 'react'
 
 import useScreenType from '../../hooks/useScreenType'
 
-const Layout: React.FC = ({ children }) => {
+export interface LayoutProps {
+  Left?: ReactNode,
+  Right?: ReactNode
+}
+
+const Layout: React.FC<LayoutProps> = ({
+  children,
+  Left,
+  Right
+}) => {
 
   const SCRENTYPE = useScreenType()
 
@@ -18,7 +27,12 @@ const Layout: React.FC = ({ children }) => {
     ui = (3)
   }
   if (SCRENTYPE === "G-3") {
-    ui = (4)
+    ui = (
+      <div className='flex flex-nowrap w-screen h-screen'>
+        {Left}
+        {children}
+      </div>
+    )
   }
 
   return (
