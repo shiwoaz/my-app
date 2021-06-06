@@ -8,6 +8,7 @@ import SocketContext from '../modules/content/socket'
 import useGetRooms from './hooks/useGetRooms';
 import useUserInfo from './hooks/useUserInfo';
 import RoomCard from './RoomCard';
+import { localGet } from '../lib/localStorage';
 
 interface IMainContainer {
 }
@@ -35,15 +36,13 @@ const MainContainer: React.FC<IMainContainer> = ({
 
   const [flag, setFlag] = useState(false)
 
-  const user = useUserInfo()
-
 
   useEffect(() => {
 
     Event.subscribe('reFetch', () => setFlag(!flag))
 
-    io?.emit('main', { user })
-    console.log(user, "addmai");
+    const { data } = JSON.parse(localGet('info') || {})
+    io?.emit('main', { user:data })
 
     return () => {
       io?.emit('leaveMain')
