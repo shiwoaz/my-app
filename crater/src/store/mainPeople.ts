@@ -35,7 +35,7 @@ const removeMainUser: removeMainUserFunc = (id) => {
   const index = MAINUSERS.findIndex(({ id: uid }) => uid === id);
   console.log(MAINUSERS, index, "edel be");
 
-  if (index !== -1) MAINUSERS.splice(index, 0);
+  if (index !== -1) MAINUSERS.splice(index, 1);
 
   console.log(MAINUSERS, index, "edel after");
 };

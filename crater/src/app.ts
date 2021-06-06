@@ -45,7 +45,7 @@ io.on("connection", (socket: Socket) => {
     delUser(id);
   });
 
-  socket.on("main", (user) => {
+  socket.on("main", ({user}) => {
     console.log(user, "123 user");
 
     addMainUser({
@@ -66,6 +66,7 @@ io.on("connection", (socket: Socket) => {
   socket.on("disconnect", () => {
     console.log(socket.id, "dis");
     delUser(socket.id);
+    removeMainUser(socket.id);
   });
 });
 
