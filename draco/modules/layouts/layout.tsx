@@ -28,10 +28,12 @@ const Layout: React.FC<LayoutProps> = ({
   }
   if (SCRENTYPE === "G-3") {
     ui = (
-      <div className='flex flex-nowrap w-screen h-screen'>
-        {Left}
-        {children}
-      </div>
+      <>
+        <div className='flex flex-nowrap w-screen h-screen'>
+          {Left}
+          {children}
+        </div>
+      </>
     )
   }
 

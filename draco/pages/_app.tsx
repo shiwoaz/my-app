@@ -8,6 +8,7 @@ import initStore from '../store/create'
 import StoreProvider from '../store/context'
 import i18n_init from '../lib/i18n'
 import isServer from '../lib/isServer'
+import { useEffect, useState } from 'react'
 
 Router.events.on('routeChangeStart', () => Nprogress.start())
 Router.events.on('routeChangeComplete', () => Nprogress.done())
@@ -21,10 +22,16 @@ function MyApp({ Component, pageProps }: AppProps) {
     i18n_init()
   }
 
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
   return (
     <>
       <StoreProvider store={store}>
-        <Component {...pageProps} />
+        {mounted && <Component {...pageProps} />}
       </StoreProvider>
     </>
   )
