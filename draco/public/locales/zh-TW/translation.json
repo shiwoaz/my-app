@@ -13,5 +13,10 @@
     "fr": "法文",
     "ru": "俄文",
     "ja": "日文"
+  },
+  "main": {
+    "currentOnline": "線上",
+    "position": "位置",
+    "hall": "大厅"
   }
 }

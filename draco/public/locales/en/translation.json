@@ -13,5 +13,10 @@
     "fr": "French",
     "ru": "Russian",
     "ja": "Japanese"
+  },
+  "main": {
+    "currentOnline": "Online now",
+    "position": "Location",
+    "hall": "Entry"
   }
 }
