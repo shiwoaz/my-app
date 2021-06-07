@@ -7,6 +7,7 @@ import Portal from './Portals'
 import PortalSettings from './PortalSettings'
 import SocketProvider from '../modules/content/socket'
 import CreateRoom from './CreateRoom'
+import useTranslate from '../hooks/useTranslate'
 
 interface ITabbar {
 
@@ -22,6 +23,8 @@ const Tabbar: React.FC<ITabbar> = ({
   const [roomVisible, setRoomVisible] = useState<boolean>(false)
 
   const { io } = useContext(SocketProvider)
+
+  const { t } = useTranslate()
 
   // let timer
 
@@ -61,8 +64,8 @@ const Tabbar: React.FC<ITabbar> = ({
         onClick={() => setRoomVisible(true)}
         className='bg-create font-mono p-3 rounded-md bg-opacity-70 text-pink-100 text-center text-lg font-extrabold absolute top-1/2 right-1/2 transform -translate-x-1/2 -translate-y-1/2'
       >
-        创建房间
-         </Button>
+        {t('main.createRoom')}
+      </Button>
       <CreateRoom visible={roomVisible} onClose={() => setRoomVisible(false)} />
     </div>
   )

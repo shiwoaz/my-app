@@ -9,6 +9,7 @@ import Portal from './Portals'
 import SocketProvider from '../modules/content/socket'
 import useUserInfo from './hooks/useUserInfo'
 import { useRouter } from 'next/router'
+import useTranslate from '../hooks/useTranslate'
 
 interface ICreateRoom {
   visible: boolean
@@ -28,13 +29,15 @@ const CreateRoom: React.FC<ICreateRoom> = ({
 
   const { replace } = useRouter()
 
+  const { t } = useTranslate()
+
   return (
     <>
       <Portal visible={visible} onClose={onClose} clasName='bg-gray-800 rounded-lg '>
         <>
           <div className='h-56 flex flex-col justify-around items-center'>
             <div className='h-24 flex flex-col justify-around items-start'>
-              <span className='text-purple-300 text-center'>房间名称 </span>
+              <span className='text-purple-300 text-center'>{t('main.roomName')}</span>
               <Input type='text' onChange={(v) => setRoomName(v.target.value)} />
             </div>
             <Button
@@ -52,7 +55,7 @@ const CreateRoom: React.FC<ICreateRoom> = ({
                 onClose()
               }}
             >
-              创建
+              {t('main.create')}
             </Button>
           </div>
         </>
