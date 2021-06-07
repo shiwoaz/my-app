@@ -16,9 +16,14 @@ const PeopleBar: React.FC<IPeopleBar> = ({ }) => {
 
   return (
     <>
-      <div className='w-full h-auto p-3'>
+      <div className='w-full h-auto p-3 flex flex-row-reverse'>
 
-        <Avatar url={userInfo?.user_avatar!} width='3rem' height='3rem' onClick={() => setVisible(true)} />
+        <Avatar
+          url={userInfo?.user_avatar!}
+          width='3rem' height='3rem'
+          onClick={() => setVisible(true)}
+          className='mr-6 block pt-2'
+        />
 
         <PortalSettings visible={visible} onClose={() => setVisible(false)} />
       </div>
