@@ -5,6 +5,7 @@ import useGetCurrentPeople, { CurrentUser } from './hooks/useGetCurrentPeople'
 import useUserInfo from './hooks/useUserInfo'
 import PeopleCard from './PeopleCard'
 import SocketProvider from '../modules/content/socket'
+import useTranslate from '../hooks/useTranslate'
 
 interface IOnlinPeopleCard {
 
@@ -16,6 +17,8 @@ const OnlinPeopleCard: React.FC<IOnlinPeopleCard> = () => {
 
   const { io } = useContext(SocketProvider)
 
+  const { t } = useTranslate()
+
 
   const current = [...useGetCurrentPeople(), { ...user, id: io?.id ?? new Date().getMilliseconds() }] as CurrentUser[]
 
@@ -24,7 +27,7 @@ const OnlinPeopleCard: React.FC<IOnlinPeopleCard> = () => {
     <div className='w-4/5 mt-0 ml-auto mr-auto text-yellow-100 text-opacity-70 h-full'>
       <Card className='border-gray-800 bg-opacity-70 flex flex-col'>
         <div>
-          <span>当前在线: {current.length}人</span>
+          <span>{t('main.currentOnline')}: {current.length}</span>
         </div>
         <div>
           {

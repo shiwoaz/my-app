@@ -1,4 +1,5 @@
 import React from 'react'
+import useTranslate from '../hooks/useTranslate'
 import Avatar from './Avatar'
 import Card from './Card'
 
@@ -13,6 +14,9 @@ const PeopleCard: React.FC<IPeopleCard> = ({
   avatar,
   room
 }) => {
+
+  const { t } = useTranslate()
+
   return (
     <>
       <Card className=' bg-gray-500 flex flex-nowrap items-center h-auto mt-2 mb-2 gap-1 text-sm'>
@@ -21,7 +25,7 @@ const PeopleCard: React.FC<IPeopleCard> = ({
         </div>
         <div className='flex flex-col justify-between'>
           <span>{name}</span>
-          <span className='truncate'><span className='mr-1'>位置:</span>{room ? <span>{room}</span> : <span>大厅</span>}</span>
+          <span className='truncate'><span className='mr-1'>{t('main.position')}:</span>{room ? <span>{room}</span> : <span>{t('main.hall')}</span>}</span>
         </div>
         <div className='w-2 h-2 bg-green-500 bg-opacity-75 rounded-full ml-2.5'></div>
       </Card>
