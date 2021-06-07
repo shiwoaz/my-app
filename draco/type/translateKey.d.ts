@@ -13,3 +13,6 @@ export type translateKey =
   | "main.currentOnline"
   | "main.position"
   | "main.hall"
+  | "main.createRoom"
+  | "main.create"
+  | "main.roomName"

@@ -17,6 +17,9 @@
   "main": {
     "currentOnline": "線上",
     "position": "位置",
-    "hall": "大厅"
+    "hall": "大厅",
+    "createRoom": "創建房間",
+    "create": "建立",
+    "roomName": "房間名稱"
   }
 }

@@ -17,6 +17,9 @@
   "main": {
     "currentOnline": "En línea",
     "position": "Ubicación",
-    "hall": "Entrada"
+    "hall": "Entrada",
+    "createRoom": "CREAR SALA",
+    "create": "Crear",
+    "roomName": "Nombre de la habitación"
   }
 }

@@ -17,6 +17,9 @@
   "main": {
     "currentOnline": "حاليا على الموقع",
     "position": "الموقع",
-    "hall": "قاعة"
+    "hall": "قاعة",
+    "createRoom": "قم بإنشاء غرفة",
+    "create": "إنشاء",
+    "roomName": "اسم الغرفة"
   }
 }

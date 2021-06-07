@@ -17,6 +17,9 @@
   "main": {
     "currentOnline": "Online now",
     "position": "Location",
-    "hall": "Entry"
+    "hall": "Entry",
+    "createRoom": "CREATE ROOM",
+    "create": "Create",
+    "roomName": "Room name"
   }
 }

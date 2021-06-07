@@ -17,6 +17,9 @@
   "main": {
     "currentOnline": "オンライン中",
     "position": "位置情報",
-    "hall": "入り口"
+    "hall": "入り口",
+    "createRoom": "ルームを作成する",
+    "create": "作成",
+    "roomName": "部屋名"
   }
 }

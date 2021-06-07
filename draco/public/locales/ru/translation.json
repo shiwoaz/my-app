@@ -17,6 +17,9 @@
   "main": {
     "currentOnline": "Сейчас онлайн",
     "position": "Местоположение",
-    "hall": "Вход"
+    "hall": "Вход",
+    "createRoom": "CREAR SALA",
+    "create": "Создать",
+    "roomName": "Название помещения"
   }
 }
