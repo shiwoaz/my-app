@@ -6,6 +6,7 @@ import MainContainer from '../../ui/MainContainer'
 import Tabbar from '../../ui/Tabbar'
 import useScreenType from '../../hooks/useScreenType'
 import PeopleBar from '../../ui/PeopleBar'
+import MainBotton from '../../ui/MainBotton'
 
 const Main: React.FC = () => {
 
@@ -20,6 +21,7 @@ const Main: React.FC = () => {
         <Header />
         <MainContainer />
         {SCREENTYPE === "G" ? <Tabbar /> : null}
+        {SCREENTYPE !== "G" ? <MainBotton /> : null}
       </FullLayout>
     </>
   )
