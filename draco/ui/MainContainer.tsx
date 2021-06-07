@@ -42,7 +42,7 @@ const MainContainer: React.FC<IMainContainer> = ({
     Event.subscribe('reFetch', () => setFlag(!flag))
 
     const { data } = JSON.parse(localGet('info') || {})
-    io?.emit('main', { user:data })
+    io?.emit('main', { user: data })
 
     return () => {
       io?.emit('leaveMain')
@@ -67,12 +67,7 @@ const MainContainer: React.FC<IMainContainer> = ({
                   room={rooms[item]}
                   onClick={() => {
                     console.log(item, "item");
-                    replace({
-                      pathname: '/chat',
-                      query: {
-                        room: item
-                      }
-                    })
+                    replace('/chat/[name]', `/chat/${item}`)
                     // io?.emit('join', { user, roomName: item })
                   }}
                 />

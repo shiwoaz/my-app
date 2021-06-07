@@ -45,13 +45,8 @@ const CreateRoom: React.FC<ICreateRoom> = ({
                   return
                 }
                 // io?.emit('join', { user, roomName })
-                replace({
-                  pathname: '/chat',
-                  query: {
-                    room: roomName
-                  }
-                })
-
+                replace('/chat/[name]', `/chat/${roomName}`)
+                //refetch room info
                 Event.dispatch("reFetch", '')
 
                 onClose()

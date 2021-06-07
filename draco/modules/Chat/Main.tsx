@@ -7,11 +7,11 @@ import ChatMain from '../../ui/ChatMain'
 
 const Main: React.FC = () => {
 
-  const { query: { room: roomId } } = useRouter()
+  const { query: { name: roomId }, } = useRouter()
 
   const room = useGetRooms(false, roomId as string)
 
-  console.log(room, "chat main");
+  console.log(room, "chat main",);
 
   return (
     <>

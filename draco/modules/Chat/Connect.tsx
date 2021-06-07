@@ -15,7 +15,7 @@ const Connect: React.FC<IConnect> = ({
 
   const { query } = useRouter()
 
-  const { room } = query
+  const { name: room } = query
 
   // const [io, user] = useJoinRoom(room as string)
 
