@@ -10,3 +10,6 @@ export type translateKey =
   | "language.fr"
   | "language.ru"
   | "language.ja"
+  | "mian.currentOnline"
+  | "main.position"
+  | "main.hall"
