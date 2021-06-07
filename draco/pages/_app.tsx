@@ -2,6 +2,7 @@ import type { AppProps } from 'next/app'
 import Router from 'next/router'
 
 import Nprogress from 'nprogress'
+import "nprogress/nprogress.css";
 import 'tailwindcss/tailwind.css'
 
 import initStore from '../store/create'
@@ -10,7 +11,7 @@ import i18n_init from '../lib/i18n'
 import isServer from '../lib/isServer'
 import { useEffect, useState } from 'react'
 
-Router.events.on('routeChangeStart', () => Nprogress.start())
+Router.events.on('routeChangeStart', () => {Nprogress.start()})
 Router.events.on('routeChangeComplete', () => Nprogress.done())
 Router.events.on('routeChangeError', () => Nprogress.done())
 
