@@ -49,7 +49,7 @@ const delUser: delUserFunc = (id) => {
     const index = USERS.findIndex(({ id: uid }) => uid === id)
     console.log(USERS, index, "edel be");
 
-    if (index !== -1) USERS.splice(index, 0)
+    if (index !== -1) USERS.splice(index, 1)
     
     console.log(USERS, index, "edel after");
 

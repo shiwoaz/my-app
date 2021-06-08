@@ -39,8 +39,8 @@ io.on("connection", (socket: Socket) => {
     // console.log(socket, client, 90);
   });
 
-  socket.on("leave", (id) => {
-    console.log(id, "leave");
+  socket.on("leaveRoom", (id) => {
+    console.log(id, "leaveRoom");
 
     delUser(id);
   });
