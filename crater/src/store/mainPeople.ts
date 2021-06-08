@@ -33,11 +33,11 @@ export type removeMainUserFunc = (id: string) => void;
 
 const removeMainUser: removeMainUserFunc = (id) => {
   const index = MAINUSERS.findIndex(({ id: uid }) => uid === id);
-  console.log(MAINUSERS, index, "edel be");
+  console.log(MAINUSERS, index, "edel be main");
 
   if (index !== -1) MAINUSERS.splice(index, 1);
 
-  console.log(MAINUSERS, index, "edel after");
+  console.log(MAINUSERS, index, "edel after mian");
 };
 
 export default MAINUSERS;
