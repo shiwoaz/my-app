@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react'
+import { useRouter } from 'next/router'
 
 import useTranslate from '../hooks/useTranslate'
 import LanguageSvg from '../icons/LanguageSvg'
@@ -25,6 +26,8 @@ const PortalSettings: React.FC<IPortalSettingsProps> = ({
 
   const [subVisible, setSubVisible] = useState<boolean>(false)
 
+  const { push } = useRouter()
+
   return (
     <>
       <Portal visible={visible} onClose={onClose} clasName='bg-gray-800 rounded-lg'>
@@ -43,7 +46,12 @@ const PortalSettings: React.FC<IPortalSettingsProps> = ({
             >
               <LanguageSvg classname='fill-current text-green-600' />&nbsp;&nbsp;<span>{t('setting.language')}</span>
             </Button><br />
-            <Button className='flex text-center w-full'>
+            <Button className='flex text-center w-full' onClick={() => {
+              localStorage.removeItem("info")
+              push({
+                pathname: "/"
+              })
+            }}>
               <LoginOutSvg classname='fill-current text-green-600' />&nbsp;&nbsp;<span>{t('setting.logout')}</span>
             </Button>
           </div>
