@@ -19,7 +19,8 @@ module.exports = {
       chatRoom: "#202541",
       roomBgC: "#848aae",
       create: "#626262",
-      roomCard: "#151a21"
+      roomCard: "#151a21",
+      rightCard: "#434f89"
     }),
     variants: {
       extend: {

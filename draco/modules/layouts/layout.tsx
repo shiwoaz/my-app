@@ -32,6 +32,7 @@ const Layout: React.FC<LayoutProps> = ({
         <div className='flex flex-nowrap w-screen h-screen'>
           {Left}
           {children}
+          {Right}
         </div>
       </>
     )

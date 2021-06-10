@@ -7,6 +7,7 @@ import Main from './Main'
 import SocketProvider from '../content/socket'
 import Socket from '../Socket'
 import LeftMain from '../../ui/LeftMain'
+import RightMain from '../../ui/RightMain'
 
 const RoomPage: React.FC = () => {
 
@@ -23,6 +24,7 @@ const RoomPage: React.FC = () => {
         <Socket>
           <Layout
             Left={<LeftMain />}
+            Right={<RightMain />}
           >
             <Main />
           </Layout>
